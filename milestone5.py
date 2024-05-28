@@ -1,5 +1,12 @@
 class Hangman:
+    '''This class is used to represent Hangman game
     
+    Attributes:
+    word_list (list[]): list of words for computer to randomly selct
+    num_lives (int): Number of lives to guess the word
+    word_guessed (list[]): Word that is being guessed
+    list_of_guessess (list[]): represents the list of letters guessed
+    '''
     def __init__(self,word_list=list(),num_lives=5):
         self.word_list=word_list
         self.num_lives=5
@@ -17,6 +24,8 @@ class Hangman:
         return
     
     def check_guess(self,guess):
+        '''This function checks if the letter guessed is in the word. 
+        Returns if the guess is successful or not'''
         guess=guess.lower()
         for guessed_letter in self.word:
             if guessed_letter==guess:
@@ -33,6 +42,8 @@ class Hangman:
         return wrong_guess
 
     def ask_for_input(self):
+        '''This funtion checks if the letter entered by the player is a valid input. 
+        If the letter is valid it then calls the check_guess function'''
         while True: 
             guess=input("Enter any letter=")
             if len(guess)!=1 or guess.isalpha()==False :
@@ -51,7 +62,7 @@ class Hangman:
 
 def play_game(word_list):
     num_lives=5
-    game=Hangman(word_list,num_lives)
+    game=Hangman(word_list,num_lives) #creates an instance of class Hangman
     while True:
         if game.num_lives==0:
             print("You Lost")
